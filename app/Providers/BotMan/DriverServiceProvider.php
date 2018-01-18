@@ -3,6 +3,7 @@
 namespace App\Providers\BotMan;
 
 use BotMan\BotMan\Drivers\DriverManager;
+use JoeDixon\BotManDrivers\UbisendDriver;
 use BotMan\Studio\Providers\DriverServiceProvider as ServiceProvider;
 
 class DriverServiceProvider extends ServiceProvider
@@ -13,7 +14,9 @@ class DriverServiceProvider extends ServiceProvider
      *
      * @var array
      */
-    protected $drivers = [];
+    protected $drivers = [
+        UbisendDriver::class
+    ];
 
     /**
      * @return void
