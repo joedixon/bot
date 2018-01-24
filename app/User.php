@@ -12,6 +12,11 @@ class User extends Model
      * @var array
      */
     protected $fillable = [
-        'channel_id', 'first_name', 'last_name',
+        'channel_id', 'first_name', 'last_name', 'wants_notifications',
     ];
+
+    public function turnOnNotifications()
+    {
+        $this->update(['wants_notifications' => true]);
+    }
 }
