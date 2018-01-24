@@ -31,6 +31,8 @@ class ManagesUsersMiddleware implements Received, Matching
             'first_name' => $bot->getUser()->getFirstName(),
             'last_name' => $bot->getUser()->getLastName()
         ]);
+
+        return $next($message);
     }
 
     /**
