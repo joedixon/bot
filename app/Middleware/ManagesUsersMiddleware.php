@@ -46,6 +46,6 @@ class ManagesUsersMiddleware implements Received, Matching
         // All messages only match, when not a new user.
         // This allows us to direct them through the
         // onboarding experience
-        return $regexMatched && $message->getExtras('is_new_user') === true;
+        return $regexMatched && !$message->getExtras('is_new_user') === true;
     }
 }
