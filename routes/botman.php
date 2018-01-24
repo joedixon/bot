@@ -13,8 +13,4 @@ $botman->fallback(function (BotMan $bot) {
     if ($bot->getMessage()->getExtras('is_new_user')) {
         return $bot->startConversation(new Onboarding);
     }
-
-    return $bot->startConversation(new Onboarding);
-
-    $bot->reply('You\'re old news I\'m afraid!');
 });
