@@ -13,7 +13,7 @@ class ParseRssFeed extends Command
      *
      * @var string
      */
-    protected $signature = 'bot:parse-rss-feed';
+    protected $signature = 'bot:parse-rss-feeds';
 
     /**
      * The console command description.
@@ -22,19 +22,6 @@ class ParseRssFeed extends Command
      */
     protected $description = 'Parse an RSS feed into the database';
 
-    protected $feed;
-
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->feed = new RssFeed(config('bot.rss_feed_url'));
-        parent::__construct();
-    }
-
     /**
      * Execute the console command.
      *
@@ -42,15 +29,19 @@ class ParseRssFeed extends Command
      */
     public function handle()
     {
-        foreach ($this->feed->all() as $article) {
-            $newArticle = Article::firstOrCreate(['unique_id' => $article->getId()]);
-            $newArticle->update([
-                'title' => $article->getTitle(),
-                'description' => $article->getDescription(),
-                'url' => $article->getUrl(),
-                'image_url' => $article->hasImage() ? $article->getImage() : null,
-                'published_at' => $article->getDate(),
-            ]);
+        foreach(config('bot.rss_feed_urls') as $feed)
+        {
+            $feed = new RssFeed($feed);
+            foreach ($feed->all() as $article) {
+                $newArticle = Article::firstOrCreate(['unique_id' => $article->getId()]);
+                $newArticle->update([
+                    'title' => $article->getTitle(),
+                    'description' => $article->getDescription(),
+                    'url' => $article->getUrl(),
+                    'image_url' => $article->hasImage() ? $article->getImage() : null,
+                    'published_at' => $article->getDate(),
+                ]);
+            }
         }
     }
 }
