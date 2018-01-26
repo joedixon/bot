@@ -70,7 +70,7 @@ class RssFeedItem
 
     public function getDescription()
     {
-        return strip_tags($this->item->get_description());
+        return trim(strip_tags($this->item->get_description()));
     }
 
     public function getContent()
@@ -80,7 +80,7 @@ class RssFeedItem
 
     public function hasImage()
     {
-        return $this->getImage() === '' ? false : true;
+        return $this->getImage() !== false;
     }
 
     public function getImage()
