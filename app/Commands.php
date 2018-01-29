@@ -11,6 +11,11 @@ class Commands
     public function latestArticles(BotMan $bot)
     {
         $articles = Article::orderBy('published_at', 'desc')->limit(10)->get();
+
+        if ($articles->count() === 0) {
+            return $bot->reply(trans('commands.no_articles'));
+        }
+
         $multiTemplate = MultiTemplate::create();
         foreach ($articles as $article) {
             if (!$article->image_url) {
