@@ -29,11 +29,11 @@ class Onboarding extends Conversation
 
     public function askToStayUpdated()
     {
-        $survey = Question::create(trans('onboarding.stay_updated', ['name' => config('app.name')]));
-        $survey->addButton(Button::create('Yes'));
-        $survey->addButton(Button::create('No'));
+        $question = Question::create(trans('onboarding.stay_updated', ['name' => config('app.name')]));
+        $question->addButton(Button::create('Yes'));
+        $question->addButton(Button::create('No'));
 
-        $this->ask($survey, function (Answer $answer) {
+        $this->ask($question, function (Answer $answer) {
             if ($answer->getText() === 'Yes') {
                 $this->turnOnNotifications($answer);
                 return $this->setExpectations(trans('onboarding.stay_updated_yes'));
