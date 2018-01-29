@@ -19,4 +19,9 @@ class User extends Model
     {
         $this->update(['wants_notifications' => true]);
     }
+
+    public function scopeWantsUpdates($query)
+    {
+        return $query->where('wants_notifications', true);
+    }
 }
