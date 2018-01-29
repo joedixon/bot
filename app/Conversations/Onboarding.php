@@ -4,9 +4,10 @@ namespace App\Conversations;
 
 use App\User;
 use BotMan\BotMan\Messages\Incoming\Answer;
+use BotMan\BotMan\Messages\Outgoing\Question;
+use BotMan\BotMan\Messages\Outgoing\Actions\Button;
 use JoeDixon\BotManDrivers\Extensions\ActionTemplate;
 use JoeDixon\BotManDrivers\Extensions\ButtonTemplate;
-use JoeDixon\BotManDrivers\Extensions\SurveyTemplate;
 use BotMan\BotMan\Messages\Conversations\Conversation;
 
 class Onboarding extends Conversation
@@ -28,8 +29,9 @@ class Onboarding extends Conversation
 
     public function askToStayUpdated()
     {
-        $survey = SurveyTemplate::create(trans('onboarding.stay_updated', ['name' => config('app.name')]));
-        $survey->addResponses(['Yes', 'No']);
+        $survey = Question::create(trans('onboarding.stay_updated', ['name' => config('app.name')]));
+        $survey->addButton(Button::create('Yes'));
+        $survey->addButton(Button::create('No'));
 
         $this->ask($survey, function (Answer $answer) {
             if ($answer->getText() === 'Yes') {
