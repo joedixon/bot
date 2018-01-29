@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Article;
 use App\Services\RssFeed;
+use App\Jobs\SendNewArticles;
 use Illuminate\Console\Command;
 
 class ParseRssFeed extends Command
@@ -29,8 +30,7 @@ class ParseRssFeed extends Command
      */
     public function handle()
     {
-        foreach(config('bot.rss_feed_urls') as $feed)
-        {
+        foreach (config('bot.rss_feed_urls') as $feed) {
             $feed = new RssFeed($feed);
             foreach ($feed->all() as $article) {
                 $newArticle = Article::firstOrCreate(['unique_id' => $article->getId()]);
@@ -43,5 +43,7 @@ class ParseRssFeed extends Command
                 ]);
             }
         }
+
+        dispatch(new SendNewArticles);
     }
 }
