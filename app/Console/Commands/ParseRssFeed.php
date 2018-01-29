@@ -14,7 +14,7 @@ class ParseRssFeed extends Command
      *
      * @var string
      */
-    protected $signature = 'bot:parse-rss-feeds';
+    protected $signature = 'bot:parse-rss-feeds {--sent}';
 
     /**
      * The console command description.
@@ -30,6 +30,8 @@ class ParseRssFeed extends Command
      */
     public function handle()
     {
+        $hasBeenSent = $this->option('sent');
+
         foreach (config('bot.rss_feed_urls') as $feed) {
             $feed = new RssFeed($feed);
             foreach ($feed->all() as $article) {
@@ -40,6 +42,7 @@ class ParseRssFeed extends Command
                     'url' => $article->getUrl(),
                     'image_url' => $article->hasImage() ? $article->getImage() : null,
                     'published_at' => $article->getDate(),
+                    'has_been_sent' => $hasBeenSent
                 ]);
             }
         }
