@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'welcome' => 'Hey there! 👋 , I\'m :name\'s personal bot',
+    'welcome' => 'Hey there! 👋 , I\'m :name\'s personal bot.',
 
     'stay_updated' => 'First things first, I\'d love to keep you in the loop when :name posts a new article. 
     
@@ -15,5 +15,5 @@ In the meantime, what can I help you with next?',
     
 What can I help you with now?',
 
-    'expectations' => 'Currently, I can get point you in the direction of :name\'s latest articles, and sign you up for the mailing list if you want to be in the inner-circle',
+    'expectations' => 'Currently, I can get point you in the direction of :name\'s latest articles, and sign you up for the mailing list if you want to be in the inner-circle.',
 ];

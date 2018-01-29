@@ -5,5 +5,9 @@ return [
     
 Watch this space, they\'re coming your way in 3, 2, 1... 
 
-Voila!'
+Voila!',
+
+    'no_articles' => 'Shoot!, I can\'t find any articles at this time.
+
+Come back later and try again.',
 ];
