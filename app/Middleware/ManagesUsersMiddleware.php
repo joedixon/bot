@@ -25,12 +25,12 @@ class ManagesUsersMiddleware implements Received, Matching
             'channel_id' => $message->getSender(),
         ]);
 
-        $message->addExtras('is_new_user', $user->wasRecentlyCreated);
-
         $user->update([
             'first_name' => $bot->getUser()->getFirstName(),
             'last_name' => $bot->getUser()->getLastName()
         ]);
+
+        $message->addExtras('is_new_user', $user->wasRecentlyCreated);
 
         return $next($message);
     }
@@ -46,6 +46,6 @@ class ManagesUsersMiddleware implements Received, Matching
         // All messages only match, when not a new user.
         // This allows us to direct them through the
         // onboarding experience
-        return $regexMatched && !$message->getExtras('is_new_user') === true;
+        return $regexMatched && $message->getExtras('is_new_user') === false;
     }
 }
