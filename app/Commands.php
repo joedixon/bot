@@ -5,6 +5,7 @@ namespace App;
 use BotMan\BotMan\BotMan;
 use JoeDixon\BotManDrivers\Extensions\MultiTemplate;
 use JoeDixon\BotManDrivers\Extensions\TemplateTemplate;
+use JoeDixon\BotManDrivers\Extensions\ButtonTemplate;
 
 class Commands
 {
@@ -28,6 +29,7 @@ class Commands
             $template->addSubtitle(str_limit($article->description, 77));
             $template->addUrl($article->url);
             $template->addImage($article->image_url);
+            $template->addButton(ButtonTemplate::create('Read more')->addType('url')->addAction($article->url));
             $multiTemplate->addTemplate($template);
         }
 
