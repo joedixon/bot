@@ -46,7 +46,7 @@ class Onboarding extends Conversation
     public function setExpectations($message)
     {
         $action = ActionTemplate::create($message . "\n\n" . trans('onboarding.expectations', ['name' => config('app.name')]));
-        $action->addButton(ButtonTemplate::create('Latest Articles')->addType('trigger')->addAction('ARTICLES'));
+        $action->addButton(ButtonTemplate::create('Latest articles')->addType('trigger')->addAction('ARTICLES'));
         $action->addButton(ButtonTemplate::create('Join the list')->addType('trigger')->addAction('LIST'));
 
         $this->bot->reply($action);

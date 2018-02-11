@@ -37,6 +37,7 @@ class SendNewArticles
                     $template->addSubtitle(str_limit($article->description, 77));
                     $template->addUrl($article->url);
                     $template->addImage($article->image_url);
+                    $template->addButton(ButtonTemplate::create('Read more')->addType('url')->addAction($article->url));
                     $message->addTemplate($template);
                 }
             }
