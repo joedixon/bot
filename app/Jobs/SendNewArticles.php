@@ -31,7 +31,9 @@ class SendNewArticles
             foreach ($articles as $article) {
                 $message = MultiTemplate::create();
                 foreach ($articles as $article) {
-                    $template = TemplateTemplate::create($article->title);
+                    // titles and subtitles are limited to 80 characters with Facebook.
+                    // Ensure 77 characters, plus 3 for the elipsis
+                    $template = TemplateTemplate::create(str_limit($article->title, 77));
                     $template->addSubtitle(str_limit($article->description, 77));
                     $template->addUrl($article->url);
                     $template->addImage($article->image_url);
