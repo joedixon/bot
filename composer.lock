@@ -1128,12 +1128,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/joedixon/botman-driver-ubisend.git",
-                "reference": "c3869b266f547d8fa6a524042da28fcf3615627b"
+                "reference": "d8cabd339893bd91992e448be3fb824311c8be52"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/joedixon/botman-driver-ubisend/zipball/c3869b266f547d8fa6a524042da28fcf3615627b",
-                "reference": "c3869b266f547d8fa6a524042da28fcf3615627b",
+                "url": "https://api.github.com/repos/joedixon/botman-driver-ubisend/zipball/d8cabd339893bd91992e448be3fb824311c8be52",
+                "reference": "d8cabd339893bd91992e448be3fb824311c8be52",
                 "shasum": ""
             },
             "require": {
@@ -1162,7 +1162,7 @@
                 }
             ],
             "description": "ubisend driver for BotMan",
-            "time": "2018-01-13T18:53:05+00:00"
+            "time": "2018-02-11T16:54:10+00:00"
         },
         {
             "name": "laravel/framework",
