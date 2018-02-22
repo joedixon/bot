@@ -7,6 +7,7 @@ use App\Article;
 use BotMan\BotMan\Facades\BotMan;
 use JoeDixon\BotManDrivers\UbisendDriver;
 use JoeDixon\BotManDrivers\Extensions\MultiTemplate;
+use JoeDixon\BotManDrivers\Extensions\ButtonTemplate;
 use JoeDixon\BotManDrivers\Extensions\TemplateTemplate;
 
 class SendNewArticles
