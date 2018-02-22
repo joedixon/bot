@@ -30,19 +30,20 @@ class ParseRssFeed extends Command
      */
     public function handle()
     {
-        $hasBeenSent = $this->option('sent');
+        $markAllAsSent = $this->option('sent');
 
         foreach (config('bot.rss_feed_urls') as $feed) {
             $feed = new RssFeed($feed);
             foreach ($feed->all() as $article) {
                 $newArticle = Article::firstOrCreate(['unique_id' => $article->getId()]);
+
                 $newArticle->update([
                     'title' => $article->getTitle(),
                     'description' => $article->getDescription(),
                     'url' => $article->getUrl(),
                     'image_url' => $article->hasImage() ? $article->getImage() : null,
                     'published_at' => $article->getDate(),
-                    'has_been_sent' => $hasBeenSent
+                    'has_been_sent' => $markAllAsSent ? true : !$newArticle->wasRecentlyCreated
                 ]);
             }
         }
