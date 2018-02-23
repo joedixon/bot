@@ -34,6 +34,7 @@ class Commands
         }
 
         $bot->reply(trans('commands.latest_articles'));
+        sleep(1);
         $bot->reply($multiTemplate);
     }
 }
