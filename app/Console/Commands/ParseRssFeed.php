@@ -21,7 +21,7 @@ class ParseRssFeed extends Command
      *
      * @var string
      */
-    protected $description = 'Parse an RSS feed into the database';
+    protected $description = 'Parse RSS feeds into the database';
 
     /**
      * Execute the console command.
