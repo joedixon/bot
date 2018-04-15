@@ -5,11 +5,11 @@ namespace Tests\BotMan;
 use App\User;
 use Newsletter;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class JoinMailingListTest extends TestCase
 {
-    use DatabaseTransactions;
+    use RefreshDatabase;
 
     /** @test */
     public function a_user_can_signup_to_the_mailing_list()

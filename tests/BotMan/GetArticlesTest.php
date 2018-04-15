@@ -5,12 +5,12 @@ namespace Tests\BotMan;
 use App\User;
 use App\Article;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use JoeDixon\BotManDrivers\Extensions\MultiTemplate;
 
 class GetArticlesTest extends TestCase
 {
-    use DatabaseTransactions;
+    use RefreshDatabase;
 
     /** @test */
     public function a_user_can_get_a_list_of_articles()

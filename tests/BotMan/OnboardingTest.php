@@ -5,12 +5,12 @@ namespace Tests\BotMan;
 use App\User;
 use Tests\TestCase;
 use BotMan\BotMan\Messages\Outgoing\Question;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use JoeDixon\BotManDrivers\Extensions\ActionTemplate;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class OnboardingTest extends TestCase
 {
-    use DatabaseTransactions;
+    use RefreshDatabase;
 
     /** @test */
     public function a_new_user_will_trigger_the_onboarding_sequence()
@@ -58,6 +58,6 @@ class OnboardingTest extends TestCase
 
         $this->bot->setUser(['id' => 12345678])
             ->receives('Hi')
-            ->assertReplyNothing();
+            ->assertReplyIsNot(trans('onboarding.welcome', ['name' => config('app.name')]));
     }
 }
