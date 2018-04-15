@@ -4,8 +4,8 @@ namespace App;
 
 use BotMan\BotMan\BotMan;
 use JoeDixon\BotManDrivers\Extensions\MultiTemplate;
-use JoeDixon\BotManDrivers\Extensions\TemplateTemplate;
 use JoeDixon\BotManDrivers\Extensions\ButtonTemplate;
+use JoeDixon\BotManDrivers\Extensions\TemplateTemplate;
 
 class Commands
 {
