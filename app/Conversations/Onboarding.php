@@ -23,6 +23,7 @@ class Onboarding extends Conversation
     public function provideGreeting()
     {
         $this->bot->reply(trans('onboarding.welcome', ['name' => config('app.name')]));
+        sleep(2);
 
         $this->askToStayUpdated();
     }
