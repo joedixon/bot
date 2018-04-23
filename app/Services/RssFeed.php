@@ -85,7 +85,7 @@ class RssFeedItem
 
     public function getImage()
     {
-        return preg_match('/(https?:\/\/.*\.(?:png|jpg))/i', $this->getContent(), $matches) === 1 ? $matches[0] : false;
+        return preg_match('/(https?:\/\/\S+\.(?:png|jpg))/i', $this->getContent(), $matches) === 1 ? $matches[0] : false;
     }
 
     public function getTags()
