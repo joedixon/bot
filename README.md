@@ -1,3 +1,5 @@
+![Building a Chatbot with Laravel and BotMan](https://pbs.twimg.com/media/DX2d3vFX0AE4xb1.png:large)
+
 # Deploy your own chatbot
 
 ## Clone the repository

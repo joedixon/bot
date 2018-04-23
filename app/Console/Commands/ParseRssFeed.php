@@ -37,6 +37,12 @@ class ParseRssFeed extends Command
             foreach ($feed->all() as $article) {
                 $newArticle = Article::firstOrCreate(['unique_id' => $article->getId()]);
 
+                if ($newArticle->wasRecentlyCreated) {
+                    $this->output->writeln('<info>Creating article:</info> ' . $article->getTitle());
+                } else {
+                    $this->output->writeln('<info>Updating article:</info> ' . $article->getTitle());
+                }
+
                 $newArticle->update([
                     'title' => $article->getTitle(),
                     'description' => $article->getDescription(),
